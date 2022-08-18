@@ -37,6 +37,21 @@ public class Car {
 		this.phoneNum = phoneNum;
 		this.primaryComplaint = primaryComplaint;
 	}
+	
+	
+	
+
+	public Car(int id, String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
+			String primaryComplaint, List<Task> tasks) {
+		this.id = id;
+		this.numberPlate = numberPlate;
+		this.manufacturer = manufacturer;
+		this.yearOfManufact = yearOfManufact;
+		this.ownerName = ownerName;
+		this.phoneNum = phoneNum;
+		this.primaryComplaint = primaryComplaint;
+		this.tasks = tasks;
+	}
 
 	public int getId() {
 		return id;
@@ -117,6 +132,10 @@ public class Car {
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
+	
+	public void addTask (Task task) {
+		tasks.add(task);
+	}
 
 	@Override
 	public String toString() {
@@ -125,9 +144,5 @@ public class Car {
 				+ primaryComplaint + ", tasks=" + tasks + ", status=" + status + ", cost=" + cost + "]";
 	}
 
-	
-	
-	
-	
 	
 }

@@ -3,7 +3,7 @@ package lt.codeacademy.learn.project.entities;
 import javax.persistence.*;
 
 @Entity
-//@Table(name="tasks")
+@Table(name="task")
 public class Task {
 	
 	@Id
