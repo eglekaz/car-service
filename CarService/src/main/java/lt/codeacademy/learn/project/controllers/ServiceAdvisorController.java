@@ -3,12 +3,7 @@ package lt.codeacademy.learn.project.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import lt.codeacademy.learn.project.entities.Car;
 import lt.codeacademy.learn.project.entities.Task;
@@ -29,6 +24,13 @@ public class ServiceAdvisorController {
     public String showAllCars(Model model) {
 		model.addAttribute("cars", carService.getAll());
         return "serviceAdvisor/car-list";
+	}
+	
+	@GetMapping("/view/{id}")
+	public String showCar (@PathVariable("id") int id, Model model) {
+		Car car = carService.findById(id);
+		model.addAttribute("car", car);
+		return "serviceAdvisor/car";
 	}
 	
 	@PostMapping("/saveJson")

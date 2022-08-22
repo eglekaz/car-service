@@ -22,4 +22,10 @@ public class CarService {
 		return carRepository.findAll();
 	}
 	
+	public Car findById (int id) {
+		Car car = carRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid car Id: " + id));
+		return car;
+	}
+	
 }
