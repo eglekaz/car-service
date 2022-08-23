@@ -29,9 +29,10 @@ public class CarService {
 		return car;
 	}
 	
-	public Car update(Car car) {
-		return carRepository.saveAndFlush(car);
+	public void delete (Car car) {
+		carRepository.delete(car);
 	}
+	
 	
 	
 }

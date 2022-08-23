@@ -15,4 +15,14 @@ public class TaskService {
 	public Task save (Task task) {
 		return taskRepository.save(task);
 	}
+	
+	public Task findById (int id) {
+		Task task = taskRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid task Id: " + id));
+		return task;
+	}
+	
+	public void delete (Task task) {
+		taskRepository.delete(task);
+	}
 }

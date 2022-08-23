@@ -29,6 +29,7 @@
 						<th>Task name</th>
 						<th>Status</th>
 						<th>Comment</th>
+						<th>Delete</th>
 
 					</tr>
 				</thead>
@@ -37,6 +38,7 @@
 						<td th:text="${task.taskName}"></td>
 						<td th:text="${task.taskStatus}"></td>
 						<td th:text="${task.comment}"></td>
+						<td><a class="btn btn-warning" th:href="@{/service-advisor/deleteTask/{id}(id=${task.id})}">Delete</a></td>
 				
 					</tr>
 				</tbody>
@@ -46,10 +48,9 @@
 			<a class="btn btn-primary" th:href="@{/service-advisor/addTask/{id}(id=${car.id})}">New task</a>
 		</p>
 		<p>
-	<a class="btn btn-primary" href="/">BACK</a>
+	<a class="btn btn-primary" href="/service-advisor/all">BACK</a>
 		<a class="btn btn-warning" href="/logout">LOG OUT</a>
 		
 		</p>
-	</div>
 </body>
 </html>

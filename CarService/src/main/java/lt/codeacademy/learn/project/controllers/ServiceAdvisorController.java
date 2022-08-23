@@ -41,6 +41,20 @@ public class ServiceAdvisorController {
         return "serviceAdvisor/add-task";
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String deleteCar (@PathVariable("id") int id, Model model) {
+		Car car = carService.findById(id);
+		carService.delete(car);
+		return "redirect:/service-advisor/all";
+	}
+	
+	@GetMapping("/deleteTask/{id}")
+	public String deleteTask (@PathVariable("id") int id, Model model) {
+		Task task = taskService.findById(id);
+		taskService.delete(task);
+		return "redirect:/service-advisor/all";
+	}
+	
 	@PostMapping("/save")
 	public String saveCar (Car car) {
 		carService.save(car);
