@@ -42,10 +42,12 @@
 				</tbody>
 			</table>
 		</div>
-		
 		<p>
-	<!--  	<a class="btn btn-primary" href="/">HOME</a>
-		<a class="btn btn-warning" href="/logout">LOG OUT</a>-->
+			<a class="btn btn-primary" th:href="@{/service-advisor/addTask/{id}(id=${car.id})}">New task</a>
+		</p>
+		<p>
+	<a class="btn btn-primary" href="/">BACK</a>
+		<a class="btn btn-warning" href="/logout">LOG OUT</a>
 		
 		</p>
 	</div>

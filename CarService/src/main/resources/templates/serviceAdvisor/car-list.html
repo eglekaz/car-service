@@ -35,7 +35,7 @@
 						<td th:text="${car.numberPlate}"></td>
 						<td th:text="${car.manufacturer}"></td>
 						<td th:text="${car.status}"></td>
-						<td><a class="btn btn-dark" th:href="@{/service-advisor/view/{id}(id=${car.id})}">--></a>
+						<td><a class="btn btn-dark" th:href="@{/service-advisor/view/{id}(id=${car.id})}">View/edit</a>
 						<td><a class="btn btn-warning" th:href="@{/service-advisor/delete/{id}(id=${car.id})}">Delete</a></td>
 					</tr>
 				</tbody>
