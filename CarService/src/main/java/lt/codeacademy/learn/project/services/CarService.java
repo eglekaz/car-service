@@ -18,6 +18,7 @@ public class CarService {
 		return carRepository.save(car);
 	}
 	
+	
 	public List<Car> getAll() {
 		return carRepository.findAll();
 	}
@@ -27,5 +28,10 @@ public class CarService {
 				.orElseThrow(() -> new IllegalArgumentException("Invalid car Id: " + id));
 		return car;
 	}
+	
+	public Car update(Car car) {
+		return carRepository.saveAndFlush(car);
+	}
+	
 	
 }

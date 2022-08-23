@@ -20,7 +20,7 @@ public class Car {
 	long phoneNum;
 	String primaryComplaint;
 	
-	@OneToMany(cascade =CascadeType.ALL)
+	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
 	List<Task> tasks = new ArrayList<Task>();
 	
 	String status;
@@ -44,6 +44,17 @@ public class Car {
 	public Car(int id, String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
 			String primaryComplaint, List<Task> tasks) {
 		this.id = id;
+		this.numberPlate = numberPlate;
+		this.manufacturer = manufacturer;
+		this.yearOfManufact = yearOfManufact;
+		this.ownerName = ownerName;
+		this.phoneNum = phoneNum;
+		this.primaryComplaint = primaryComplaint;
+		this.tasks = tasks;
+	}
+	
+	public Car(String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
+			String primaryComplaint, List<Task> tasks) {
 		this.numberPlate = numberPlate;
 		this.manufacturer = manufacturer;
 		this.yearOfManufact = yearOfManufact;
@@ -134,7 +145,7 @@ public class Car {
 	}
 	
 	public void addTask (Task task) {
-		tasks.add(task);
+		this.tasks.add(task);
 	}
 
 	@Override

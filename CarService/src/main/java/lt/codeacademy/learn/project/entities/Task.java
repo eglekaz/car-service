@@ -14,7 +14,18 @@ public class Task {
 	String taskStatus;
 	String comment;
 	
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn(name = "car_id")
+	Car car;
+	
 	public Task() {	}
+	
+	public Task(String taskName, String taskStatus, String comment, Car car) {
+		this.taskName = taskName;
+		this.taskStatus = taskStatus;
+		this.comment = comment;
+		this.car = car;
+	}
 	
 	public Task(String taskName, String taskStatus, String comment) {
 		this.taskName = taskName;
@@ -54,11 +65,24 @@ public class Task {
 		this.comment = comment;
 	}
 
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
 	@Override
 	public String toString() {
 		return "Task [id=" + id + ", taskName=" + taskName + ", taskStatus=" + taskStatus + ", comment=" + comment
-				+ "]";
+				+ ", car=" + car.getNumberPlate() + "]";
 	}
+
+	
+	
+
+	
 
 	
 }

@@ -33,10 +33,12 @@ public class ServiceAdvisorController {
 		return "serviceAdvisor/car";
 	}
 	
-	@PostMapping("/saveJson")
-	public String saveCarJson (@RequestBody Car car) {
-		carService.save(car);
-		return "redirect:/index";
+	@GetMapping("/addTask/{id}")
+    public String showCreateTaskForm(@PathVariable("id") int id, Task task, Model model) {
+		Car car = carService.findById(id);
+		model.addAttribute("car", car);
+		
+        return "serviceAdvisor/add-task";
 	}
 	
 	@PostMapping("/save")
@@ -45,29 +47,13 @@ public class ServiceAdvisorController {
 		return "redirect:/service-advisor/all";
 	}
 	
-	@GetMapping("/getDummyCar")
-	public @ResponseBody Car getDummyCar() {
-		Car car = new Car ("ABC123", "Audi", 2009, "Jonas", 860051211, "Headlights do not work");
-		car.addTask(new Task ("diagnostics", "Done", ""));
-		car.addTask(new Task ("changing bulb", "In Progress", ""));
-		return car;
-	}
-	
-	@PostMapping("/saveTask")
-	public String saveTask (Task task) {
+	@PostMapping("/saveTask/{id}")
+	public String saveTask (@PathVariable("id") int id, Task task) {
+		Car car = carService.findById(id);
+		//if
+		task.setCar(car);
 		taskService.save(task);
-		return "redirect:/index";
-	}
-	
-	@PostMapping("/saveTaskJson")
-	public String saveTaskJson (@RequestBody Task task) {
-		taskService.save(task);
-		return "redirect:/index";
-	}
-	
-	@GetMapping("/getDummy")
-	public @ResponseBody Task getDummy() {
-		return new Task ("taskname", "taskstatus", "taskcomment");
+		return "redirect:/service-advisor/all";
 	}
 	
 	@GetMapping("/add")
@@ -75,6 +61,31 @@ public class ServiceAdvisorController {
         return "serviceAdvisor/add-car";
 	}
 	
-	
+
+//	
+//	@PostMapping("/saveJson")
+//	public String saveCarJson (@RequestBody Car car) {
+//		carService.save(car);
+//		return "redirect:/index";
+//	}
+//	
+//	@GetMapping("/getDummyCar")
+//	public @ResponseBody Car getDummyCar() {
+//		Car car = new Car ("ABC123", "Audi", 2009, "Jonas", 860051211, "Headlights do not work");
+//		car.addTask(new Task ("diagnostics", "Done", ""));
+//		car.addTask(new Task ("changing bulb", "In Progress", ""));
+//		return car;
+//	}
+//	
+//	@GetMapping("/getDummy")
+//	public @ResponseBody Task getDummy() {
+//		return new Task ("taskname", "taskstatus", "taskcomment");
+//	}
+//	
+//	@PostMapping("/saveTaskJson")
+//	public String saveTaskJson (@RequestBody Task task) {
+//		taskService.save(task);
+//		return "redirect:/index";
+//	}
 
 }
