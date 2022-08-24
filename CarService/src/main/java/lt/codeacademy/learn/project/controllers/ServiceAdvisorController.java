@@ -45,7 +45,7 @@ public class ServiceAdvisorController {
 	@PostMapping("/updateTask/{id}")
 	public String updateTask(@PathVariable("id") int id, Task task, Model model) {
 		taskService.save(task);
-		return "redirect:/service-advisor/view" + id;
+		return "redirect:/service-advisor/view/" + task.getCar().getId();
 	}
 	
 	
@@ -69,7 +69,7 @@ public class ServiceAdvisorController {
 	public String deleteTask (@PathVariable("id") int id, Model model) {
 		Task task = taskService.findById(id);
 		taskService.delete(task);
-		return "redirect:/service-advisor/view/" + id;
+		return "redirect:/service-advisor/view/" + task.getCar().getId();
 	}
 	
 	@PostMapping("/save")

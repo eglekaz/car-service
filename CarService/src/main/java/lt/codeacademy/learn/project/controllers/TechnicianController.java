@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lt.codeacademy.learn.project.entities.Car;
+import lt.codeacademy.learn.project.entities.Task;
 import lt.codeacademy.learn.project.services.CarService;
 import lt.codeacademy.learn.project.services.TaskService;
 
@@ -32,6 +34,19 @@ public class TechnicianController {
 		Car car = carService.findById(id);
 		model.addAttribute("car", car);
 		return "technician/car";
+	}
+	
+	@GetMapping("/editTask/{id}")
+	public String editCar(@PathVariable("id") int id, Model model) {
+		Task task = taskService.findById(id);
+		model.addAttribute("task", task);
+		return "technician/edit-task";
+	}
+	
+	@PostMapping("/updateTask/{id}")
+	public String updateTask(@PathVariable("id") int id, Task task, Model model) {
+		taskService.save(task);
+		return "redirect:/technician/view/" + task.getCar().getId();
 	}
 	
 }
