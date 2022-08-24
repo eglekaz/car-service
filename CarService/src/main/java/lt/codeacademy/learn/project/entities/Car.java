@@ -38,8 +38,6 @@ public class Car {
 		this.primaryComplaint = primaryComplaint;
 	}
 	
-	
-	
 
 	public Car(int id, String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
 			String primaryComplaint, List<Task> tasks) {

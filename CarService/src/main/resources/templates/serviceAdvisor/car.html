@@ -16,12 +16,34 @@
 		<h2>Service advisor page</h2>
 	</div>
 	<div >
-		<h2 th:text="${car.numberPlate}"></h2>
-		<h3 th:text="${car.manufacturer}"></h3>
-		<h3 th:text="${car.yearOfManufact}"></h3>
-		<h3 th:text="${car.ownerName}"></h3>
-		<h3 th:text="${car.phoneNum}"></h3>
-		<h3 th:text="${car.primaryComplaint}"></h3>
+	<table>
+		<tr>
+			<th>Number plate:</th>
+			<td th:text="${car.numberPlate}"></td>
+		</tr>
+		<tr>
+			<th>Manufacturer:</th>
+			<td th:text="${car.manufacturer}"></td>
+		</tr>
+		<tr>
+			<th>Year of manufactory:</th>
+			<td th:text="${car.yearOfManufact}"></td>
+		</tr>
+		<tr>
+			<th>Owner name:</th>
+			<td th:text="${car.ownerName}"></td>
+		</tr>
+		<tr>
+			<th>Owner's phone number:</th>
+			<td th:text="${car.phoneNum}"></td>
+		</tr>
+		<tr>
+			<th>Primary complaint:</th>
+			<td th:text="${car.primaryComplaint}"></td>
+		</tr>
+	</table>
+		
+		<h3>Tasks: </h3>
 
 			<table class="table table-hover">
 				<thead>
@@ -29,6 +51,7 @@
 						<th>Task name</th>
 						<th>Status</th>
 						<th>Comment</th>
+						<th>Edit</th>
 						<th>Delete</th>
 
 					</tr>
@@ -38,11 +61,13 @@
 						<td th:text="${task.taskName}"></td>
 						<td th:text="${task.taskStatus}"></td>
 						<td th:text="${task.comment}"></td>
+						<td><a class="btn btn-dark" th:href="@{/service-advisor/editTask/{id}(id=${task.id})}">View/edit</a>
 						<td><a class="btn btn-warning" th:href="@{/service-advisor/deleteTask/{id}(id=${task.id})}">Delete</a></td>
 				
 					</tr>
 				</tbody>
 			</table>
+			
 		</div>
 		<p>
 			<a class="btn btn-primary" th:href="@{/service-advisor/addTask/{id}(id=${car.id})}">New task</a>
