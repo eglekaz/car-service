@@ -69,6 +69,7 @@ public enum Manufacturer {
 	JMC,
 	KIA,
 	KOENIGSEGG,
+	LADA,
 	LAMBORGHINI,
 	LANCIA,
 	LAND_ROVER,

@@ -33,7 +33,24 @@ public class ServiceAdvisorController {
 		return "serviceAdvisor/car";
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String deleteCar (@PathVariable("id") int id, Model model) {
+		Car car = carService.findById(id);
+		carService.delete(car);
+		return "redirect:/service-advisor/all";
+	}
 	
+	@PostMapping("/save")
+	public String saveCar (Car car) {
+		carService.save(car);
+		return "redirect:/service-advisor/all";
+	}
+	
+	@PostMapping("/updateCar/{id}")
+	public String updateCar(@PathVariable("id") int id, Car car, Model model) {
+		carService.save(car);
+		return "redirect:/service-advisor/view/" + car.getId();
+	}
 	
 	@GetMapping("/editTask/{id}")
 	public String editCar(@PathVariable("id") int id, Model model) {
@@ -48,21 +65,12 @@ public class ServiceAdvisorController {
 		return "redirect:/service-advisor/view/" + task.getCar().getId();
 	}
 	
-	
-	
 	@GetMapping("/addTask/{id}")
     public String showCreateTaskForm(@PathVariable("id") int id, Task task, Model model) {
 		Car car = carService.findById(id);
 		model.addAttribute("car", car);
 		
         return "serviceAdvisor/add-task";
-	}
-	
-	@GetMapping("/delete/{id}")
-	public String deleteCar (@PathVariable("id") int id, Model model) {
-		Car car = carService.findById(id);
-		carService.delete(car);
-		return "redirect:/service-advisor/all";
 	}
 	
 	@GetMapping("/deleteTask/{id}")
@@ -72,16 +80,9 @@ public class ServiceAdvisorController {
 		return "redirect:/service-advisor/view/" + task.getCar().getId();
 	}
 	
-	@PostMapping("/save")
-	public String saveCar (Car car) {
-		carService.save(car);
-		return "redirect:/service-advisor/all";
-	}
-	
 	@PostMapping("/saveTask/{id}")
 	public String saveTask (@PathVariable("id") int id, Task task) {
 		Car car = carService.findById(id);
-		//if
 		task.setCar(car);
 		taskService.save(task);
 		return "redirect:/service-advisor/view/" + id;
