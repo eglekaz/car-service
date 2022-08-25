@@ -29,11 +29,4 @@ public class CustomerController {
 		return "customer/car";
 	}
 	
-//	@PostMapping("/submit/{numberPlate}/{phoneNum}")
-//	public String showCustomerCar (@PathVariable("numberPlate") String numberPlate, @PathVariable("numberPlate") long phoneNum, Model model) {
-//		Car car = carService.findByNumberPlateAndPhoneNum(numberPlate, phoneNum);
-//		model.addAttribute("car", car);
-//		return "customer/car";
-//	}
-
 }
