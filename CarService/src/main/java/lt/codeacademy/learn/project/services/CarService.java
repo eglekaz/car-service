@@ -33,6 +33,11 @@ public class CarService {
 		carRepository.delete(car);
 	}
 	
+	public Car findByNumberPlateAndPhoneNum (String numberPlate, long phoneNum) {
+		Car car = carRepository.findByNumberPlateAndPhoneNum(numberPlate, phoneNum)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid car"));
+		return car;
+	}
 	
 	
 }
