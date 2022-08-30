@@ -11,18 +11,10 @@
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 </script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $("#locales").change(function () {
-        var selectedOption = $('#locales').val();
-        if (selectedOption != ''){
-            window.location.replace('?lang=' + selectedOption);
-        }
-    });
-});
-</script>
+
 </head>
   <body>
+  <th:block th:include="/_header"></th:block>
     <h1 th:text="#{greeting}"></h1>
    <p>Soon here will be login page</p>
    <p>
@@ -35,13 +27,7 @@ $(document).ready(function() {
 			<a class="btn btn-dark" href="/customer/find" th:text="#{check.car}"></a>
 		</p> 
 		
-	
-	<span th:text="#{lang.change}"></span>:
-	<select id="locales">
-   	 	<option value=""></option>
-    	<option value="en" th:text="#{lang.eng}"></option>
-  	  	<option value="lt" th:text="#{lang.lt}"></option>
-	</select>
+
 	
 
 		

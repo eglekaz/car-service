@@ -11,47 +11,48 @@
 </script>
 </head>
 <body>
+<th:block th:include="/_header"></th:block>
 <div>
-<h2>Create new car repair order</h2>
+<h2 th:text="#{add.car}"></h2>
 </div>
 <div >
 <form class="form-control" action="#" th:action="@{/service-advisor/save}"
 			th:object="${car}" method="post">
 		<div>
 		<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="numberPlate">Car</label> 
+				<label class="form-check-label w-25" for="numberPlate" th:text="#{num.plate}"></label> 
 				<input class="form-check-input w-auto" type="text" th:field="${car.numberPlate}" id="numberPlate"
 					placeholder="Number plate"> 
 			</div>
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="manufacturer">Manufacturer</label> 
+				<label class="form-check-label w-25" for="manufacturer" th:text="#{manufact}"></label> 
 				<input class="form-check-input w-auto" type="text" th:field="${car.manufacturer}" id="manufacturer"
 					placeholder="Manufacturer"> 
 			</div>
 		<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="yearOfManufact">Year of Manufactory</label> 
+				<label class="form-check-label w-25" for="yearOfManufact" th:text="#{year.manuf}"></label> 
 				<input class="form-check-input w-auto" type="number" th:field="${car.yearOfManufact}" id="yearOfManufact"
 					placeholder="Year of manufactory"> 
 			</div>
 		<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="ownerName">Owner name</label> 
+				<label class="form-check-label w-25" for="ownerName" th:text="#{owner.name}"></label> 
 				<input class="form-check-input w-auto" type="text" th:field="${car.ownerName}" id="ownerName"
 					placeholder="Owner name"> 
 			</div>
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="phoneNum">Phone number</label> 
+				<label class="form-check-label w-25" for="phoneNum" th:text="#{owner.number}"></label> 
 				<input class="form-check-input w-auto" type="number" th:field="${car.phoneNum}" id="phoneNum"
 					placeholder="Phone number"> 
 			</div>
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="primaryComplaint">Primary complaint</label> 
+				<label class="form-check-label w-25" for="primaryComplaint" th:text="#{complaint}"></label> 
 				<input class="form-check-input w-auto" type="text" th:field="${car.primaryComplaint}" id="primaryComplaint"
 					placeholder="Primary complaint"> 
 			</div>
 		</div>	
 		
 			
-			<button type="submit" class="btn btn-dark">Save car</button>
+			<button type="submit" class="btn btn-dark" th:text="#{save}"></button>
 			</form>
 		</div>
 </body>

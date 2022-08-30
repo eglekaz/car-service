@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Car service</title>
 <meta charset="utf-8">
@@ -11,21 +11,23 @@
 </script>
 </head>
   <body>
-  <div class="container-fluid p-5 bg-dark text-white text-center">
-		<h2>Welcome, Service advisor!</h2>
+  <th:block th:include="/_header"></th:block>
+<div class="container-fluid p-5 bg-dark text-white text-center">
+		<h2 th:text="#{cars}">:</h2>		
   </div>
+  
 	<div class="container-fluid" th:switch="${cars}">
-		<h2 th:case="null">No customer cars yet!</h2>
+		<h2 th:case="null"  th:text="#{no.cars}"></h2>
 		<div th:case="*">
 
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Car ID</th>
-						<th>Car</th>
-						<th>Manufacturer</th>
-						<th>Repair status</th>
-						<th>View/Edit</th>
+						<th th:text="#{car.id}"></th>
+						<th th:text="#{car}"></th>
+						<th th:text="#{manufact}"></th>
+						<th th:text="#{rep.status}"></th>
+						<th th:text="#{view.edit}"></th>
 						
 					</tr>
 				</thead>
@@ -42,7 +44,7 @@
 			</table>
 		</div>
 		<p>
-			<a class="btn btn-dark" href="/service-advisor/add">Add a new customer car</a>
+			<a class="btn btn-dark" href="/service-advisor/add" th:text="#{add.car}"></a>
 		</p>	
   </div>
   

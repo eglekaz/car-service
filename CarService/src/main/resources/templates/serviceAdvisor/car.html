@@ -11,48 +11,46 @@
 </script>
 </head>
 <body>
-
+<th:block th:include="/_header"></th:block>
 	<div class="container-fluid p-5 bg-dark text-white text-center">
-		<h2>Service advisor page</h2>
+		
 	</div>
 	<div >
 	<table>
 		<tr>
-			<th>Number plate:</th>
+			<th th:text="#{num.plate}">:</th>
 			<td th:text="${car.numberPlate}"></td>
 		</tr>
 		<tr>
-			<th>Manufacturer:</th>
+			<th th:text="#{manufact}">:</th>
 			<td th:text="${car.manufacturer}"></td>
 		</tr>
 		<tr>
-			<th>Year of manufactory:</th>
+			<th th:text="#{year.manuf}">:</th>
 			<td th:text="${car.yearOfManufact}"></td>
 		</tr>
 		<tr>
-			<th>Owner name:</th>
+			<th th:text="#{owner.name}">:</th>
 			<td th:text="${car.ownerName}"></td>
 		</tr>
 		<tr>
-			<th>Owner's phone number:</th>
+			<th th:text="#{owner.number}">:</th>
 			<td th:text="${car.phoneNum}"></td>
 		</tr>
 		<tr>
-			<th>Primary complaint:</th>
+			<th th:text="#{complaint}">:</th>
 			<td th:text="${car.primaryComplaint}"></td>
 		</tr>
 	</table>
-		
-		<h3>Tasks: </h3>
-
+		<h3 th:text="#{tasks}">: </h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Task name</th>
-						<th>Status</th>
-						<th>Comment</th>
-						<th>Edit</th>
-						<th>Delete</th>
+						<th th:text="#{task}"></th>
+						<th th:text="#{status}"></th>
+						<th th:text="#{comment}"></th>
+						<th th:text="#{edit}"></th>
+						<th th:text="#{delete}"></th>
 
 					</tr>
 				</thead>
@@ -61,8 +59,8 @@
 						<td th:text="${task.taskName}"></td>
 						<td th:text="${task.taskStatus}"></td>
 						<td th:text="${task.comment}"></td>
-						<td><a class="btn btn-dark" th:href="@{/service-advisor/editTask/{id}(id=${task.id})}">Edit</a>
-						<td><a class="btn btn-warning" th:href="@{/service-advisor/deleteTask/{id}(id=${task.id})}">Delete</a></td>
+						<td><a class="btn btn-dark" th:href="@{/service-advisor/editTask/{id}(id=${task.id})}">--></a>
+						<td><a class="btn btn-warning" th:href="@{/service-advisor/deleteTask/{id}(id=${task.id})}" th:text="#{delete}"></a></td>
 				
 					</tr>
 				</tbody>
@@ -70,7 +68,7 @@
 			
 		</div>
 		<p>
-			<a class="btn btn-dark" th:href="@{/service-advisor/addTask/{id}(id=${car.id})}">New task</a>
+			<a class="btn btn-dark" th:href="@{/service-advisor/addTask/{id}(id=${car.id})}" th:text="#{new.task}"></a>
 		</p>
 		
 		<div>
@@ -91,17 +89,17 @@
 			id="primaryComplaint">
 		<input type="hidden" th:field="*{tasks}"
 			id="tasks">
-		<label for="status">Car repair status</label> <input type="text" th:field="*{status}"
+		<label for="status" th:text="#{rep.status}">:</label> <input type="text" th:field="*{status}"
 			id="status" placeholder="status"> 
-		<label for="cost">Car repair cost, EUR: </label> <input type="number" step="0.01" th:field="*{cost}"
+		<label for="cost" th:text="#{rep.cost}">, EUR: </label> <input type="number" step="0.01" th:field="*{cost}"
 			id="cost" placeholder="cost"> 
 		<input	type="submit" value="Update Car">
 	</form>
 		
 		</div>
 		<p>
-	<a class="btn btn-dark" href="/service-advisor/all">BACK</a>
-		<a class="btn btn-warning" href="/logout">LOG OUT</a>
+	<a class="btn btn-dark" href="/service-advisor/all" th:text="#{back}"></a>
+		<a class="btn btn-warning" href="/logout" th:text="#{log.out}"></a>
 		
 		</p>
 </body>

@@ -11,48 +11,47 @@
 </script>
 </head>
 <body>
-
+<th:block th:include="/_header"></th:block>
 	<div class="container-fluid p-5 bg-dark text-white text-center">
-		<h2>Technician page</h2>
+		
 	</div>
 	<div >
 	<table>
 		<tr>
-			<th>Number plate:</th>
+			<th th:text="#{num.plate}">:</th>
 			<td th:text="${car.numberPlate}"></td>
 		</tr>
 		<tr>
-			<th>Manufacturer:</th>
+			<th th:text="#{manufact}">:</th>
 			<td th:text="${car.manufacturer}"></td>
 		</tr>
 		<tr>
-			<th>Year of manufactory:</th>
+			<th th:text="#{year.manuf}">:</th>
 			<td th:text="${car.yearOfManufact}"></td>
 		</tr>
 		<tr>
-			<th>Owner name:</th>
+			<th th:text="#{owner.name}">:</th>
 			<td th:text="${car.ownerName}"></td>
 		</tr>
 		<tr>
-			<th>Owner's phone number:</th>
+			<th th:text="#{owner.number}">:</th>
 			<td th:text="${car.phoneNum}"></td>
 		</tr>
 		<tr>
-			<th>Primary complaint:</th>
+			<th th:text="#{complaint}">:</th>
 			<td th:text="${car.primaryComplaint}"></td>
 		</tr>
 	</table>
 	</div>
 	<div >
-		<h3>Tasks: </h3>
-
+		<h3 th:text="#{tasks}">: </h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Task name</th>
-						<th>Status</th>
-						<th>Comment</th>
-						<th>Edit</th>
+						<th th:text="#{task}"></th>
+						<th th:text="#{status}"></th>
+						<th th:text="#{comment}"></th>
+						<th th:text="#{edit}"></th>
 
 					</tr>
 				</thead>
@@ -61,7 +60,7 @@
 						<td th:text="${task.taskName}"></td>
 						<td th:text="${task.taskStatus}"></td>
 						<td th:text="${task.comment}"></td>
-						<td><a class="btn btn-dark" th:href="@{/technician/editTask/{id}(id=${task.id})}">Edit</a>
+						<td><a class="btn btn-dark" th:href="@{/technician/editTask/{id}(id=${task.id})}" th:text="#{edit}"></a>
 				
 					</tr>
 				</tbody>
@@ -69,8 +68,8 @@
 		</div>
 		
 		<p>
-	  	<a class="btn btn-dark" href="/technician/all">BACK</a>
-		<a class="btn btn-warning" href="/logout">LOG OUT</a>
+	  	<a class="btn btn-dark" href="/technician/all" th:text="#{back}"></a>
+		<a class="btn btn-warning" href="/logout" th:text="#{log.out}"></a>
 		
 		</p>
 

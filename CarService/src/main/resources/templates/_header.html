@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+ <div class="header-bar">
+ 	<th:block>
+         &nbsp;|&nbsp;
+         <a th:href="@{/}" th:text="#{homepage}"></a>
+      </th:block>
+      <th:block>
+         &nbsp;|&nbsp;
+         <a th:href="@{/admin/logout}" th:text="#{log.out}">Logout</a>
+      </th:block>
+      <th:block>
+      &nbsp;|&nbsp;
+         <a th:href="@{/admin/login}" th:text="#{log.in}">Login</a>
+           &nbsp;|&nbsp;
+      </th:block>
+      <th:block>
+         <a th:href="@{?lang=en}">EN</a>
+           &nbsp;|&nbsp;
+      </th:block>
+      <th:block>
+         <a th:href="@{?lang=lt}">LT</a>
+           &nbsp;|&nbsp;
+      </th:block>
+   </div>
+</body>
+</html>
+  

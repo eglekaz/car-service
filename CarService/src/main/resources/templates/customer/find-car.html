@@ -11,21 +11,22 @@
 </script>
 </head>
 <body>
+<th:block th:include="/_header"></th:block>
 <div >
 <form class="form-control" action="#" th:action="@{/customer/yourCar}"
 			th:object="${submitInfo}" method="post">
 		
 		<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="numberPlate">Car number plate</label> 
+				<label class="form-check-label w-25" for="numberPlate" th:text="#{num.plate}"></label> 
 				<input class="form-check-input w-auto" type="text" th:field="${submitInfo.plate}" id="numberPlate"
 					placeholder="Number plate"> 
 			</div>
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="phoneNum">Owner's phone number</label> 
+				<label class="form-check-label w-25" for="phoneNum" th:text="#{owner.number}"></label> 
 				<input class="form-check-input w-auto" type="number" th:field="${submitInfo.phone}" id="phoneNum"
 					placeholder="Phone number"> 
 			</div>
-			<button type="submit" class="btn btn-dark">Find</button>
+			<button type="submit" class="btn btn-dark" th:text="#{find}"></button>
 			</form>
 		</div>
 </body>

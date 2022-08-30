@@ -11,46 +11,46 @@
 </script>
 </head>
 <body>
-
+<th:block th:include="/_header"></th:block>
 	<div class="container-fluid p-5 bg-dark text-white text-center">
-		<h2>Customer's page</h2>
+		
 	</div>
 	<div >
 	<table>
 		<tr>
-			<th>Number plate:</th>
+			<th th:text="#{num.plate}">:</th>
 			<td th:text="${car.numberPlate}"></td>
 		</tr>
 		<tr>
-			<th>Manufacturer:</th>
+			<th th:text="#{manufact}">:</th>
 			<td th:text="${car.manufacturer}"></td>
 		</tr>
 		<tr>
-			<th>Year of manufactory:</th>
+			<th th:text="#{year.manuf}">:</th>
 			<td th:text="${car.yearOfManufact}"></td>
 		</tr>
 		<tr>
-			<th>Owner name:</th>
+			<th th:text="#{owner.name}">:</th>
 			<td th:text="${car.ownerName}"></td>
 		</tr>
 		<tr>
-			<th>Owner's phone number:</th>
+			<th th:text="#{owner.number}">:</th>
 			<td th:text="${car.phoneNum}"></td>
 		</tr>
 		<tr>
-			<th>Primary complaint:</th>
+			<th th:text="#{complaint}">:</th>
 			<td th:text="${car.primaryComplaint}"></td>
 		</tr>
 	</table>
 		
-		<h3>Tasks: </h3>
+		<h3 th:text="#{tasks}">: </h3>
 
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Task name</th>
-						<th>Status</th>
-						<th>Comment</th>
+						<th th:text="#{task}"></th>
+						<th th:text="#{status}"></th>
+						<th th:text="#{comment}"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -63,17 +63,17 @@
 			</table>
 			<table>
 		<tr>
-			<th>Car repair status:</th>
+			<th th:text="#{rep.status}">:</th>
 			<td th:text="${car.status}"></td>
 		</tr>
 		<tr>
-			<th>Car repair cost, EUR:</th>
+			<th th:text="#{rep.cost}">, EUR:</th>
 			<td th:text="${car.cost}"></td>
 		</tr>
 		</table>
 		</div>
 		<p>
-	<a class="btn btn-dark" href="/">BACK</a>
+	<a class="btn btn-dark" href="/" th:text="#{back}"></a>
 		
 		
 		</p>
