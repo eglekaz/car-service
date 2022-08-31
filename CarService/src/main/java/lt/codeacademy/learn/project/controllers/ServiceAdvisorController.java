@@ -1,8 +1,11 @@
 package lt.codeacademy.learn.project.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import lt.codeacademy.learn.project.entities.Car;
@@ -41,19 +44,25 @@ public class ServiceAdvisorController {
 	}
 	
 	@PostMapping("/save")
-	public String saveCar (Car car) {
+	public String saveCar (@Valid Car car, BindingResult result) {
+		if (result.hasErrors()) {
+			return "serviceAdvisor/add-car";
+		}
 		carService.save(car);
 		return "redirect:/service-advisor/all";
 	}
 	
 	@PostMapping("/updateCar/{id}")
-	public String updateCar(@PathVariable("id") int id, Car car, Model model) {
+	public String updateCar(@PathVariable("id") int id, @Valid Car car, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			return "serviceAdvisor/car";
+		}
 		carService.save(car);
 		return "redirect:/service-advisor/view/" + car.getId();
 	}
 	
 	@GetMapping("/editTask/{id}")
-	public String editCar(@PathVariable("id") int id, Model model) {
+	public String editTask(@PathVariable("id") int id, Model model) {
 		Task task = taskService.findById(id);
 		model.addAttribute("task", task);
 		return "serviceAdvisor/edit-task";
@@ -65,9 +74,9 @@ public class ServiceAdvisorController {
 		return "redirect:/service-advisor/view/" + task.getCar().getId();
 	}
 	
-	@GetMapping("/addTask/{id}")
-    public String showCreateTaskForm(@PathVariable("id") int id, Task task, Model model) {
-		Car car = carService.findById(id);
+	@GetMapping("/addTask/{carId}")
+    public String showCreateTaskForm(@PathVariable("carId") int carId, Task task, Model model) {
+		Car car = carService.findById(carId);
 		model.addAttribute("car", car);
 		
         return "serviceAdvisor/add-task";
@@ -80,12 +89,12 @@ public class ServiceAdvisorController {
 		return "redirect:/service-advisor/view/" + task.getCar().getId();
 	}
 	
-	@PostMapping("/saveTask/{id}")
-	public String saveTask (@PathVariable("id") int id, Task task) {
-		Car car = carService.findById(id);
+	@PostMapping("/saveTask/{carId}")
+	public String saveTask (@PathVariable("carId") int carId, Task task) {
+		Car car = carService.findById(carId);
 		task.setCar(car);
 		taskService.save(task);
-		return "redirect:/service-advisor/view/" + id;
+		return "redirect:/service-advisor/view/" + carId;
 	}
 	
 	@GetMapping("/add")

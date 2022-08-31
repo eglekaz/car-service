@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 //@Table(name="cars")
@@ -13,17 +14,31 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
+	@Size(min= 2, max = 10)
 	String numberPlate;
+	
+	@NotBlank 
 	String manufacturer;
+	
+	@NotNull
 	int yearOfManufact;
+	
+	@NotBlank  
 	String ownerName;
+	
+	@Digits(fraction = 0, integer = 9)
 	long phoneNum;
+	
+	@NotBlank  
 	String primaryComplaint;
 	
 	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
 	List<Task> tasks = new ArrayList<Task>();
 	
+	@NotBlank
 	String status;
+	
+	@PositiveOrZero
 	double cost;
 	
 	public Car() { }

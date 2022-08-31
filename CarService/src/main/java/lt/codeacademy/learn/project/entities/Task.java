@@ -1,6 +1,8 @@
 package lt.codeacademy.learn.project.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
+
 
 @Entity
 @Table(name="task")
@@ -10,11 +12,11 @@ public class Task {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
-	String taskName;
+	String taskName; 
 	String taskStatus;
 	String comment;
 	
-	@ManyToOne (fetch = FetchType.EAGER)
+	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_id")
 	Car car;
 	

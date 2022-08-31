@@ -17,19 +17,23 @@
 <h3 th:text="${car.numberPlate}"></h3>
 </div>
 <div >
-<form class="form-control" action="#" th:action="@{/service-advisor/saveTask/{id}(id=${car.id})}"
+<form class="form-control" action="#" th:action="@{/service-advisor/saveTask/{carId}(carId=${car.id})}"
 			th:object="${task}" method="post">
 		
 		<div class="mb-3 mt-3 w-auto">
 				<label class="form-check-label w-25" for="taskName" th:text="#{task}"></label> 
 				<input class="form-check-input w-auto" type="text" th:field="${task.taskName}" id="taskName"
-					placeholder="Task name"> 
+					placeholder="Task name">
 			</div>
 			<div class="mb-3 mt-3 w-auto">
 				<label class="form-check-label w-25" for="taskStatus" th:text="#{status}"></label> 
-				<input class="form-check-input w-auto" type="text" th:field="${task.taskStatus}" id="taskStatus"
-					placeholder="Task status"> 
-			</div>
+				<select th:field="${task.taskStatus}" id="taskStatus">
+					<option value=""></option>
+					<option th:each="status : ${T(lt.codeacademy.learn.project.models.Status).values()}"
+						th:value="${status}"
+                        th:text="${status}">
+				</select>
+				</div>
 		<div class="mb-3 mt-3 w-auto">
 				<label class="form-check-label w-25" for="comment" th:text="#{comment}"></label> 
 				<input class="form-check-input w-auto" type="text" th:field="${task.comment}" id="comment"
