@@ -16,13 +16,13 @@
   <body>
   <th:block th:include="/_header"></th:block>
     <h1 th:text="#{greeting}"></h1>
-   <p>Soon here will be login page</p>
+    <div th:if="${param.logout}">
+    You have been logged out.
+</div>
    <p>
-			<a class="btn btn-dark" href="/service-advisor/all">SERVICE ADVISOR list</a>
+			<a class="btn btn-dark" href="/login">LOGIN</a>
 		</p>
-		<p>
-			<a class="btn btn-dark" href="/technician/all">TECHNICIAN list</a>
-		</p>
+		
 		 <p>
 			<a class="btn btn-dark" href="/customer/find" th:text="#{check.car}"></a>
 		</p> 

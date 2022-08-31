@@ -19,6 +19,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
+	
+	@Autowired
+	private UserAuthenticationSuccessHandler successHandler;
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
@@ -37,15 +40,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .hasAuthority("ROLE_USER")
                 .anyRequest().permitAll()
                 .and()
-                .formLogin().permitAll()
+                .formLogin().successHandler(successHandler)
+                .loginPage("/index").loginProcessingUrl("/process-login").permitAll()
                 .and()
-                .logout().permitAll();
+                .logout().logoutSuccessUrl("/?logout=true")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID").permitAll()
+                .and()
+                .csrf()
+                .disable();
               
-//              http.csrf()
-//                .ignoringAntMatchers("/principal/**");
-//              http.headers()
-//                .frameOptions()
-//                .sameOrigin();
+
 	}
 	
 }
