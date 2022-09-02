@@ -25,6 +25,9 @@ public class CustomerController {
 	@PostMapping("/yourCar")
 	public String showCustomerCar (SubmitInfo info, Model model) {
 		Car car = carService.findByNumberPlateAndPhoneNum(info.getPlate(), info.getPhone());
+		if (car==null) {
+			return "error-405";
+		}
 		model.addAttribute("car", car);
 		return "customer/car";
 	}

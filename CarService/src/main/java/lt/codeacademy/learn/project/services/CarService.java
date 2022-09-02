@@ -34,8 +34,8 @@ public class CarService {
 	}
 	
 	public Car findByNumberPlateAndPhoneNum (String numberPlate, long phoneNum) {
-		Car car = carRepository.findByNumberPlateAndPhoneNum(numberPlate, phoneNum)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid car"));
+		Car car = carRepository.findByNumberPlateAndPhoneNum(numberPlate, phoneNum);
+//				.orElseThrow(() -> new IllegalArgumentException("Invalid car"));
 		return car;
 	}
 	
