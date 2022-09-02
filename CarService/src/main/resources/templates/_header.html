@@ -1,29 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <body>
- <div class="header-bar">
- 	<th:block>
-         &nbsp;|&nbsp;
+<nav>
+  <ul>
+    <li>
          <a th:href="@{/}" th:text="#{homepage}"></a>
+      </li>
+    <li>
+      <th:block sec:authorize="isAuthenticated()">
+         
+         <a th:href="@{/logout}" th:text="#{log.out}"></a>
       </th:block>
-      <th:block>
-         &nbsp;|&nbsp;
-         <a th:href="@{/admin/logout}" th:text="#{log.out}">Logout</a>
+      </li>
+    <li>
+      <th:block sec:authorize="!isAuthenticated()">
+         <a th:href="@{/login}" th:text="#{log.in}"></a>
+          
       </th:block>
-      <th:block>
-      &nbsp;|&nbsp;
-         <a th:href="@{/admin/login}" th:text="#{log.in}">Login</a>
-           &nbsp;|&nbsp;
-      </th:block>
-      <th:block>
+    </li>
+    <li>  
+
          <a th:href="@{?lang=en}">EN</a>
-           &nbsp;|&nbsp;
-      </th:block>
-      <th:block>
+           
+  </li>
+    <li>
+      
          <a th:href="@{?lang=lt}">LT</a>
-           &nbsp;|&nbsp;
-      </th:block>
-   </div>
+       </li>
+    </ul>
+</nav> 
+      
 </body>
 </html>
   
