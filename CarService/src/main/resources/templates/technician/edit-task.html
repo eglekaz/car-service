@@ -19,7 +19,7 @@
 		method="post">
 		<label for="taskName" th:text="#{task}"></label> <input type="text" th:field="*{taskName}"
 			id="taskName" placeholder="Task name"> 
-		 <label for="taskStatus" th:text="#{status}"></label> <select th:field="${car.status}" id="status">
+		 <label for="taskStatus" th:text="#{status}"></label> <select th:field="${task.taskStatus}" id="status">
 					<option value=""></option>
 					<option th:each="status : ${T(lt.codeacademy.learn.project.models.Status).values()}"
 						th:value="${status}"
@@ -29,7 +29,7 @@
 			id="taskStatus" placeholder="Comment"> 
 		<input type="hidden" th:field="*{car}"
 			id="car_id" placeholder="Car id"> 
-		<input	type="submit"  th:text="#{save}">
+		<input	type="submit"  value="#{save}">
 		<!-- value="Update Task" -->
 	</form>
 </body>
