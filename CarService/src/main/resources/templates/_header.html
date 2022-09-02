@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-
 <body>
 <nav>
   <ul>
@@ -10,28 +9,25 @@
       </li>
     <li>
       <th:block sec:authorize="isAuthenticated()">
-         
          <a th:href="@{/logout}" th:text="#{log.out}"></a>
       </th:block>
       </li>
     <li>
       <th:block sec:authorize="!isAuthenticated()">
          <a th:href="@{/login}" th:text="#{log.in}"></a>
-          
       </th:block>
     </li>
     <li>  
-
-         <a th:href="@{?lang=en}">EN</a>
-           
+         <a>||</a>   
+  </li>
+    <li>  
+         <a th:href="@{?lang=en}">EN</a> 
   </li>
     <li>
-      
          <a th:href="@{?lang=lt}">LT</a>
        </li>
     </ul>
-</nav> 
-      
+</nav>     
 </body>
 </html>
   

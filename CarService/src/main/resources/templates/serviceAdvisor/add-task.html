@@ -3,45 +3,51 @@
 <head>
 <title>Car service</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"> 
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
-</script>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 </head>
 <body>
 <th:block th:include="/_header"></th:block>
-<div>
+<div class="index">
 <h2 th:text="#{create.task}">:</h2>
 <h3 th:text="${car.numberPlate}"></h3>
-</div>
-<div >
-<form class="form-control" action="#" th:action="@{/service-advisor/saveTask/{carId}(carId=${car.id})}"
+
+<form action="#" th:action="@{/service-advisor/saveTask/{carId}(carId=${car.id})}"
 			th:object="${task}" method="post">
-		
-		<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="taskName" th:text="#{task}"></label> 
+	<div>
+		<div class="row">
+			<div class="col-25">
+				<label for="taskName" th:text="#{task}"></label> 
+			</div>
+			<div class="col-75">
 				<input class="form-check-input w-auto" type="text" th:field="${task.taskName}" id="taskName"
 					placeholder="Task name">
 			</div>
-			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="taskStatus" th:text="#{status}"></label> 
+		</div>
+		<div class="row">
+			<div class="col-25">
+				<label for="taskStatus" th:text="#{status}"></label> 
+			</div>
+			<div class="col-75">	
 				<select th:field="${task.taskStatus}" id="taskStatus">
 					<option value=""></option>
 					<option th:each="status : ${T(lt.codeacademy.learn.project.models.Status).values()}"
 						th:value="${status}"
                         th:text="${status}">
 				</select>
-				</div>
-		<div class="mb-3 mt-3 w-auto">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-25">
 				<label class="form-check-label w-25" for="comment" th:text="#{comment}"></label> 
+			</div>
+			<div class="col-75">	
 				<input class="form-check-input w-auto" type="text" th:field="${task.comment}" id="comment"
 					placeholder="Comment"> 
 			</div>
-			
-			<button type="submit" class="btn btn-dark" th:text="#{save}"></button>
-			</form>
 		</div>
+			<button type="submit" class="btn btn-dark" th:text="#{save}"></button>
+		</div>	
+	</form>
+</div>
 </body>
 </html>
