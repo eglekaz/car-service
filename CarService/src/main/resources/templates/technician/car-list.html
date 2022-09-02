@@ -19,7 +19,7 @@
 		<h2 th:case="null" th:text="#{no.cars}"></h2>
 		<div th:case="*">
 		<div class="tbl-header">
-			<table cellpadding="0" cellspacing="0" border="0">
+			<table class="data-table" cellpadding="0" cellspacing="0" border="0">
 				<thead>
 					<tr>
 						<th th:text="#{car.id}"></th>
@@ -31,8 +31,8 @@
 				</thead>
 			</table>
 		 </div>
-		 <div class="tbl-content">
-		   <table cellpadding="0" cellspacing="0" border="0">
+		 <div class="tbl-content-cars">
+		   <table class="data-table" cellpadding="0" cellspacing="0" border="0">
 				<tbody>
 					<tr th:each="car : ${cars}">
 						<td th:text="${car.id}"></td>
@@ -46,6 +46,5 @@
 		</div>
 	</div>		
   </div>
-  
   </body>
 </html>

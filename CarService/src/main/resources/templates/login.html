@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title th:text="#{please.login}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="login">
+	<h1 th:text="#{management}"></h1>
+	<h2 th:text="#{please.login}"></h2>
+	<div th:if="${param.error}"  th:text="#{login.error}">
+			</div>
+    <form method="post" th:action="@{/process-login}">
+    	<input type="text" name="username" placeholder="Username" required="required" />
+        <input type="password" name="password" placeholder="Password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large" th:text="#{log.in}"></button>
+    </form>
+  </div>
+</body>
+</html>

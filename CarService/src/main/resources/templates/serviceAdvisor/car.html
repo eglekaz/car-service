@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Car service</title>
+<title th:text="#{order.details}"></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"> 
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
-</script>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 </head>
 <body>
 <th:block th:include="/_header"></th:block>
-	<div class="container-fluid p-5 bg-dark text-white text-center">
-		
-	</div>
-	<div >
-	<table>
+<div>
+	<table class="top-table">
 		<tr>
 			<th th:text="#{num.plate}">:</th>
 			<td th:text="${car.numberPlate}"></td>
@@ -42,8 +35,12 @@
 			<td th:text="${car.primaryComplaint}"></td>
 		</tr>
 	</table>
-		<h3 th:text="#{tasks}">: </h3>
-			<table class="table table-hover">
+	</div>
+		<div>
+		<h2 th:text="#{tasks}">:</h2>
+		</div>
+		<div class="tbl-header">
+			<table class="data-table" cellpadding="0" cellspacing="0" border="0">
 				<thead>
 					<tr>
 						<th th:text="#{task}"></th>
@@ -51,9 +48,12 @@
 						<th th:text="#{comment}"></th>
 						<th th:text="#{edit}"></th>
 						<th th:text="#{delete}"></th>
-
 					</tr>
 				</thead>
+				</table>
+		 </div>
+		 <div class="tbl-content-tasks">
+		   <table class="data-table" cellpadding="0" cellspacing="0" border="0">
 				<tbody>
 					<tr th:each="task : ${car.tasks}">
 						<td th:text="${task.taskName}"></td>
@@ -61,17 +61,14 @@
 						<td th:text="${task.comment}"></td>
 						<td><a class="btn btn-dark" th:href="@{/service-advisor/editTask/{id}(id=${task.id})}">--></a>
 						<td><a class="btn btn-warning" th:href="@{/service-advisor/deleteTask/{id}(id=${task.id})}" th:text="#{delete}"></a></td>
-				
 					</tr>
 				</tbody>
 			</table>
-			
 		</div>
 		<p>
-			<a class="btn btn-dark" th:href="@{/service-advisor/addTask/{id}(id=${car.id})}" th:text="#{new.task}"></a>
-		</p>
-		
-		<div>
+			<a class="btn btn-primary" th:href="@{/service-advisor/addTask/{id}(id=${car.id})}" th:text="#{new.task}"></a>
+		</p>	
+		<div  class="update-form">
 		<form class="form-control" action="#"
 		th:action="@{/service-advisor/updateCar/{id}(id=${car.id})}" th:object="${car}"
 		method="post">
@@ -89,24 +86,38 @@
 			id="primaryComplaint">
 		<input type="hidden" th:field="*{tasks}"
 			id="tasks">
-		<label for="status" th:text="#{rep.status}">:</label> <select th:field="${car.status}" id="status">
+	 <div class="row">
+    	<div class="col-lbl">
+			<label for="status" th:text="#{rep.status}">:</label> 
+		</div>
+   		<div class="col">
+			<select th:field="${car.status}" id="status">
 					<option value=""></option>
 					<option th:each="status : ${T(lt.codeacademy.learn.project.models.Status).values()}"
 						th:value="${status}"
                         th:text="${status}">
 				</select>
 			<span th:if="${#fields.hasErrors('status')}" th:errors="*{status}">Status Error</span>
-		<label for="cost" th:text="#{rep.cost}">, EUR: </label> <input type="number" step="0.01" th:field="*{cost}"
-			id="cost" placeholder="cost"> 
-			<span th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}">Cost Error</span>
-		<input	type="submit" value="Update Car">
-	</form>
-		
 		</div>
-		<p>
-	<a class="btn btn-dark" href="/service-advisor/all" th:text="#{back}"></a>
-		<a class="btn btn-warning" href="/logout" th:text="#{log.out}"></a>
-		
-		</p>
+   	 	<div class="col-lbl">
+			<label for="cost" th:text="#{rep.cost}">, EUR: </label> 
+		</div>
+      	<div class="col">
+			<input type="number" step="0.01" th:field="*{cost}"
+				id="cost" placeholder="cost"> 
+			<span th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}">Cost Error</span>
+		</div>   
+		<div class="col-btn">
+			<input	type="submit" value="Update Car">
+  		</div>
+		<!-- <input	type="submit" value="Update Car"> -->
+		</div>
+	</form>	
+
+<p>
+	<a class="btn btn-primary" href="/service-advisor/all" th:text="#{back}"></a>
+	<!--	<a class="btn btn-" href="/logout" th:text="#{log.out}"></a>-->	
+</p>
+</div>
 </body>
 </html>

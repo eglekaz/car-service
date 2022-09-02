@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
 <body>
-<h1> Something went wrong! GENERAL </h1>
-<h2>Our Engineers are on it.</h2>
-<p><a href="/">Go Home</a></p>
+<div class="error">
+<h1 th:text="#{error.unknown}"></h1>
+<a href="/" th:text="#{homepage}"></a>
+</div>
 </body>
 </html>

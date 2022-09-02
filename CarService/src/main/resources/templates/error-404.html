@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
 <body>
-<h1>Sorry, we could not find the page you were looking for 404! </h1>
-<h2>Our Engineers are on it</h2>
-<a href="/">Go Home</a>
+<div class="error">
+<h1 th:text="#{error.not.found}"></h1>
+<a href="/" th:text="#{homepage}"></a>
+</div>
 </body>
 </html>

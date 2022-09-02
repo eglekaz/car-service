@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Car service</title>
+    <title th:text="#{car.service}"></title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 </head>
   <body>
@@ -9,14 +9,22 @@
   <div class="index">
     <h1 th:text="#{greeting}"></h1>
     <div th:if="${param.logout}">
-    You have been logged out.
+    <h3 th:text="#{logged.out}"></h3>
 	</div>
-   <p>
-    <a class="btn btn-primary btn-block btn-large" href="/login" >Login</a>>
+   <p sec:authorize="!isAuthenticated()">
+    <a class="btn btn-primary btn-block btn-large" href="/login" th:text="#{log.in}"></a>
 	</p>
-		 <p>
+		 <p sec:authorize="!isAuthenticated()">
 			<a class="btn btn-primary btn-block btn-large" 
 			href="/customer/find" th:text="#{check.car}"></a>
+		</p> 
+		 <p sec:authorize="hasRole('ROLE_USER')">
+			<a class="btn btn-primary btn-block btn-large" 
+			href="/technician/all" th:text="#{car.list}"></a>
+		</p> 
+		 <p sec:authorize="hasRole('ROLE_ADMIN')">
+			<a class="btn btn-primary btn-block btn-large" 
+			href="/service-advisor/all" th:text="#{car.list}"></a>
 		</p> 
 	</div>
   </body>

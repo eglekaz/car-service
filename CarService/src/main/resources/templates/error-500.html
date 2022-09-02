@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
 <body>
-<h1> Sorry, something went wrong 500! </h1>
-
-<h2>We're fixing it.</h2>
-<p><a href="/">Go Home</a></p>
+<div class="error">
+<h1 th:text="#{error.internal}"></h1>
+<a href="/" th:text="#{homepage}"></a>
+</div>
 </body>
 </html>
