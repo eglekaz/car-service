@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-75">
 				<input class="form-check-input w-auto" type="text" th:field="${task.taskName}" id="taskName"
-					placeholder="Task name">
+					th:placeholder="#{task}">
 			</div>
 		</div>
 		<div class="row">
@@ -42,7 +42,7 @@
 			</div>
 			<div class="col-75">	
 				<input class="form-check-input w-auto" type="text" th:field="${task.comment}" id="comment"
-					placeholder="Comment"> 
+					th:placeholder="#{comment}"> 
 			</div>
 		</div>
 			<button type="submit" class="btn btn-dark" th:text="#{save}"></button>

@@ -7,10 +7,10 @@
   <body>
   <th:block th:include="/_header"></th:block>
   <div class="index">
-    <h1 th:text="#{greeting}"></h1>
-    <div th:if="${param.logout}">
+     <div th:if="${param.logout}">
     <h3 th:text="#{logged.out}"></h3>
 	</div>
+    <h1 th:text="#{greeting}"></h1>
    <p sec:authorize="!isAuthenticated()">
     <a class="btn btn-primary btn-block btn-large" href="/login" th:text="#{log.in}"></a>
 	</p>

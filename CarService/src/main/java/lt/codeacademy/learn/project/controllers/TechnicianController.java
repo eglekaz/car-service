@@ -37,7 +37,7 @@ public class TechnicianController {
 	}
 	
 	@GetMapping("/editTask/{id}")
-	public String editCar(@PathVariable("id") int id, Model model) {
+	public String editTask(@PathVariable("id") int id, Model model) {
 		Task task = taskService.findById(id);
 		model.addAttribute("task", task);
 		return "technician/edit-task";
