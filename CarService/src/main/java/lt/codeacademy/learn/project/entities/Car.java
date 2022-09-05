@@ -53,6 +53,18 @@ public class Car {
 		this.primaryComplaint = primaryComplaint;
 	}
 	
+	public Car(String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
+			String primaryComplaint, String status, double cost) {
+		this.numberPlate = numberPlate;
+		this.manufacturer = manufacturer;
+		this.yearOfManufact = yearOfManufact;
+		this.ownerName = ownerName;
+		this.phoneNum = phoneNum;
+		this.primaryComplaint = primaryComplaint;
+		this.status=status;
+		this.cost=cost;
+	}
+	
 
 	public Car(int id, String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
 			String primaryComplaint, List<Task> tasks) {
@@ -64,6 +76,17 @@ public class Car {
 		this.phoneNum = phoneNum;
 		this.primaryComplaint = primaryComplaint;
 		this.tasks = tasks;
+	}
+	
+	public Car(int id, String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
+			String primaryComplaint) {
+		this.id = id;
+		this.numberPlate = numberPlate;
+		this.manufacturer = manufacturer;
+		this.yearOfManufact = yearOfManufact;
+		this.ownerName = ownerName;
+		this.phoneNum = phoneNum;
+		this.primaryComplaint = primaryComplaint;
 	}
 	
 	public Car(String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
