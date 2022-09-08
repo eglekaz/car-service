@@ -1,4 +1,4 @@
-![]{https://github.com/eglekaz/my-git-test/blob/main/Fiksavimas.JPG}
+![Fiksavimas](https://user-images.githubusercontent.com/110820706/189049749-a0bee8b4-5f26-4f3b-b66d-16744f093c5c.JPG)
 
 # Car Service management application
 
@@ -7,8 +7,8 @@ This application is created to provide tracking of car repair processes inside c
 ## Technologies
 
 This application is done with Spring Boot with the following options:
-+ Java 17.0.2
-+ Spring Boot 2.7.2
++ [Java 17.0.2](https://www.oracle.com/java/technologies/javase/17-0-2-relnotes.html)
++ [Spring Boot 2.7.2](https://spring.io/projects/spring-boot#overview)
 + Spring JPA and MySQL for data persistence
 + Thymeleaf template for the rendering
 
