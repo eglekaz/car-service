@@ -101,32 +101,5 @@ public class ServiceAdvisorController {
     public String showCreateForm(Car car) {
         return "serviceAdvisor/add-car";
 	}
-	
-
-//	
-//	@PostMapping("/saveJson")
-//	public String saveCarJson (@RequestBody Car car) {
-//		carService.save(car);
-//		return "redirect:/index";
-//	}
-//	
-//	@GetMapping("/getDummyCar")
-//	public @ResponseBody Car getDummyCar() {
-//		Car car = new Car ("ABC123", "Audi", 2009, "Jonas", 860051211, "Headlights do not work");
-//		car.addTask(new Task ("diagnostics", "Done", ""));
-//		car.addTask(new Task ("changing bulb", "In Progress", ""));
-//		return car;
-//	}
-//	
-//	@GetMapping("/getDummy")
-//	public @ResponseBody Task getDummy() {
-//		return new Task ("taskname", "taskstatus", "taskcomment");
-//	}
-//	
-//	@PostMapping("/saveTaskJson")
-//	public String saveTaskJson (@RequestBody Task task) {
-//		taskService.save(task);
-//		return "redirect:/index";
-//	}
 
 }

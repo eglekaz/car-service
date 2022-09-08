@@ -1,7 +1,6 @@
 package lt.codeacademy.learn.project.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 
 @Entity
@@ -16,7 +15,7 @@ public class Task {
 	String taskStatus;
 	String comment;
 	
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name = "car_id")
 	Car car;
 	

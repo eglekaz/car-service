@@ -7,7 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-//@Table(name="cars")
 public class Car {
 
 	@Id
@@ -65,40 +64,6 @@ public class Car {
 		this.cost=cost;
 	}
 	
-
-	public Car(int id, String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
-			String primaryComplaint, List<Task> tasks) {
-		this.id = id;
-		this.numberPlate = numberPlate;
-		this.manufacturer = manufacturer;
-		this.yearOfManufact = yearOfManufact;
-		this.ownerName = ownerName;
-		this.phoneNum = phoneNum;
-		this.primaryComplaint = primaryComplaint;
-		this.tasks = tasks;
-	}
-	
-	public Car(int id, String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
-			String primaryComplaint) {
-		this.id = id;
-		this.numberPlate = numberPlate;
-		this.manufacturer = manufacturer;
-		this.yearOfManufact = yearOfManufact;
-		this.ownerName = ownerName;
-		this.phoneNum = phoneNum;
-		this.primaryComplaint = primaryComplaint;
-	}
-	
-	public Car(String numberPlate, String manufacturer, int yearOfManufact, String ownerName, long phoneNum,
-			String primaryComplaint, List<Task> tasks) {
-		this.numberPlate = numberPlate;
-		this.manufacturer = manufacturer;
-		this.yearOfManufact = yearOfManufact;
-		this.ownerName = ownerName;
-		this.phoneNum = phoneNum;
-		this.primaryComplaint = primaryComplaint;
-		this.tasks = tasks;
-	}
 
 	public int getId() {
 		return id;
